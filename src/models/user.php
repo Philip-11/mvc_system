@@ -37,9 +37,15 @@ class User
             'email' => $this->email,
         ));
 
-        $stmt->fetch(PDO::FETCH_ASSOC);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($user && )
+    
+        if ($user && password_verify($this->password, $user['password'])){
+            $this->userData = $user;
+            return true;
+        }
+
+        return false;
     }
 
     function get()
