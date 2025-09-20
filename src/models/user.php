@@ -29,6 +29,19 @@ class User
         return true;
     }
 
+    function login(): bool
+    {
+        $sql = "SELECT * FROM accounts WHERE email=:email";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(array(
+            'email' => $this->email,
+        ));
+
+        $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user && )
+    }
+
     function get()
     {
         $sql = "SELECT * FROM accounts";
