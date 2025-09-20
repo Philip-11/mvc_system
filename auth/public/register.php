@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -19,21 +19,26 @@ require_once __DIR__ . '/../../bootstrap.php';
 
 <body>
     <main class="container">
-        <form action="POST">
+        <form action="<?php echo BASE_URL; ?>/src/controllers/registerController.php" method="POST">
             <div>Sign up</div>
             <div>
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="">
+            </div>
+
+            <div>
                 <label for="email">Email:</label>
-                <input type="email" name="" id="">
+                <input type="email" name="email" id="">
             </div>
 
             <div>
                 <label for="password">Password:</label>
-                <input type="password" name="" id="">
+                <input type="password" name="password" id="">
             </div>
 
             <div>
                 <label for="password2">Password Again:</label>
-                <input type="password" name="" id="">
+                <input type="password" name="password2" id="">
             </div>
 
             <div>
