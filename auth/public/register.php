@@ -17,41 +17,48 @@ require_once __DIR__ . '/../../bootstrap.php';
     <?php require_once BASE_PATH . '/src/inc/bootstrap_lib.php'; ?>
 </head>
 
-<body>
-    <main class="container">
-        <form action="<?php echo BASE_URL; ?>/src/controllers/registerController.php" method="POST">
-            <div>Sign up</div>
-            <div>
-                <label for="username">Username:</label>
-                <input type="text" name="username" id="">
-            </div>
+<body>  
+    <main class="">
+        <section class="d-flex justify-content-center align-items-center mx-auto py-5 my-5 w-100">
+            <form class="shadow-lg p-5 rounded" action="<?php echo BASE_URL; ?>/src/controllers/registerController.php" method="POST">
+                <h1 class="h1 fw-bold text-center">Sign up</h1>
+                <div class="form-floating">
+                    <input class="form-control" type="text" name="username" id="username" placeholder="Username">
+                    <label class="" for="username">Username</label>
+                   
+                </div>
 
-            <div>
-                <label for="email">Email:</label>
-                <input type="email" name="email" id="">
-            </div>
+                <div class="form-floating">
+                    <input class="form-control" type="email" name="email" id="email" placeholder="Email">
+                    <label for="email">Email:</label>
+                </div>
 
-            <div>
-                <label for="password">Password:</label>
-                <input type="password" name="password" id="">
-            </div>
+                <div class="form-floating">
+                    <input class="form-control" type="password" name="password" id="" placeholder="Password">
+                    <label for="password">Password:</label>
+                    
+                </div>
 
-            <div>
-                <label for="password2">Password Again:</label>
-                <input type="password" name="password2" id="">
-            </div>
+                <div class="form-floating mb-3">
+                    <input class="form-control" type="password" name="password2" id="" placeholder="Password Again">
+                    <label for="password2">Password Again:</label>
+                    
+                </div>
 
-            <div>
-                <label for="agree">
-                    <input type="checkbox" name="agree" id="agree" value="yes"> I agree with the <a href="">terms of services</a>
-                </label>
-            </div>
-            <button type="submit">Register</button>
-            <footer>Already a member? <a href="login.php">login here!</a></footer>
+                <div class="form-check mb-3">
+                    <label for="agree" class="form-check-label">
+                        I agree with the <a href="">terms of services</a>
+                    </label>
+                    <input class="form-check-input" type="checkbox" name="agree" id="agree" value="yes">
+                </div>
+                <button class="btn btn-primary mb-3 w-100" type="submit">Register</button>
+                <footer>Already a member? <a href="login.php">login here!</a></footer>
 
 
 
-        </form>
+            </form>
+        </section>
+        
     </main>
 
 </body>
