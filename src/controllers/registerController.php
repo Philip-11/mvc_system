@@ -1,15 +1,31 @@
 <?php
+session_start();
 
 require_once __DIR__ . '/../../bootstrap.php';
 require_once BASE_PATH . '/config/database.php';
 require_once BASE_PATH . '/src/models/user.php';
+require_once BASE_PATH . '/src/libs/validator.php';
 
 $conn = Database::connect();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $old_input = ['email' => $email, 'username' => $username,];
+
     $username = sanitize($_POST['username']);
     $email = sanitize($_POST['email']);
-    $password = sanitize($_POST['password']);
+    $password = trim($_POST['password']);
+
+    if ($msg = Validator::username($username)) $errors[] = $msg;
+    if ($msg = Validator::email($email)) $errors[] = $msg;
+    if ($msg = Validator::password($password)) $errors[] = $msg;
+
+    if (!empty($errors)) {
+        $_SESSION['errors'] = $errors;
+        $_SESSION['old_input'] = $old_input;
+        header('Location: ' . BASE_PATH . '/auth/public/register.php');
+        exit;
+    }
+
 
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     $user = new User($username, $email, $hashed_password, $conn);
