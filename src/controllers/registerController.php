@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 session_start();
 
 require_once __DIR__ . '/../../bootstrap.php';
@@ -22,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($errors)) {
         $_SESSION['errors'] = $errors;
         $_SESSION['old_input'] = $old_input;
-        header('Location: ' . BASE_PATH . '/auth/public/register.php');
+        header('Location: ' . BASE_URL . '/auth/public/register.php');
         exit;
     }
 
