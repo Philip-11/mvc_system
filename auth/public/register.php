@@ -6,7 +6,8 @@ ini_set('display_errors', 1);
 
 require_once __DIR__ . '/../../bootstrap.php';
 session_start();
-
+$old = $_SESSION['old_input'] ?? [];
+unset($_SESSION['old_input']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,12 +38,12 @@ session_start();
             <form class="shadow-lg p-5 rounded" action="<?php echo BASE_URL; ?>/src/controllers/registerController.php" method="POST">
                 <h1 class="h1 fw-bold text-center">Sign up</h1>
                 <div class="form-floating">
-                    <input class="form-control" type="text" name="username" id="username" placeholder="Username" required>
+                    <input class="form-control" type="text" name="username" id="username" placeholder="Username" value="<?php echo htmlspecialchars($old['username'] ?? '') ?>" required>
                     <label class="" for="username">Username</label>
                 </div>
 
                 <div class="form-floating">
-                    <input class="form-control" type="email" name="email" id="email" placeholder="Email" required>
+                    <input class="form-control" type="email" name="email" id="email" placeholder="Email" value="<?php echo htmlspecialchars($old['email']  ?? '') ?>" required>
                     <label for="email">Email:</label>
                 </div>
 

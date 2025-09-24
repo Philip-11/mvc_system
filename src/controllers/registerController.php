@@ -11,11 +11,11 @@ require_once BASE_PATH . '/src/libs/validator.php';
 $conn = Database::connect();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $old_input = ['email' => $email, 'username' => $username,];
 
     $username = sanitize($_POST['username']);
     $email = sanitize($_POST['email']);
     $password = trim($_POST['password']);
+    $old_input = ['email' => $email, 'username' => $username,];
 
     if ($msg = Validator::username($username)) $errors[] = $msg;
     if ($msg = Validator::email($email)) $errors[] = $msg;
