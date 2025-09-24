@@ -15,11 +15,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = sanitize($_POST['username']);
     $email = sanitize($_POST['email']);
     $password = trim($_POST['password']);
+    $password_again = trim($_POST['password2']);
     $old_input = ['email' => $email, 'username' => $username,];
 
     if ($msg = Validator::username($username)) $errors[] = $msg;
     if ($msg = Validator::email($email)) $errors[] = $msg;
-    if ($msg = Validator::password($password)) $errors[] = $msg;
+    if ($msg = Validator::password($password, $password_again)) $errors[] = $msg;
 
     if (!empty($errors)) {
         $_SESSION['errors'] = $errors;

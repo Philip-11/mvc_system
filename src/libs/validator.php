@@ -26,12 +26,14 @@ class Validator
         return null;
     }
 
-    public static function password($password, $minLength = 8)
+    public static function password($password, $confirmPassword, $minLength = 8)
     {
         if (empty($password)) {
             return "Password is required";
         } elseif (strlen($password) < $minLength) {
             return "Password must be at least $minLength characters long";
+        } elseif ($password !== $confirmPassword) {
+            return "Password do not match";
         }
 
         return null;
