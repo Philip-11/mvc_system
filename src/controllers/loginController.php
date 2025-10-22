@@ -18,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         session_regenerate_id();
         $data = $user->get();
         $_SESSION['logged_in'] = true;
+        $_SESSION['id'] = $data['id'];
         $_SESSION['username'] = $data['username'];
         $_SESSION['email'] = $data['email'];
 
