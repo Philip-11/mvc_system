@@ -115,4 +115,18 @@ class User
             'id' => $user_id,
         ));
     }
+
+    public function update_user(int $user_id, string $username, string $email, string $password): bool
+    {
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        $sql = "UPDATE accounts SET username = :username, email = :email, password = :password WHERE id = :id";
+        $stmt = self::$conn->prepare($sql);
+
+        return $stmt->execute(array(
+            'username' => $username,
+            'email' => $email,
+            'password' => $hashed_password,
+            'id' => $user_id,
+        ));
+    }
 }
